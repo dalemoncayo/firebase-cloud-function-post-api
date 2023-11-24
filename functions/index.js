@@ -53,7 +53,7 @@ app.get('/post/:postId', async (req, res) => {
 // Read all post
 app.get('/post', async (req, res) => {
   try {
-    const postSnapshot = await firestore.collection('post').get();
+    const postSnapshot = await firestore.collection('post').orderBy('timestamp').get();
 
     const allpost = [];
     postSnapshot.forEach((doc) => {
