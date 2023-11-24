@@ -15,12 +15,12 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 // Create a post
-app.post('/posts', async (req, res) => {
+app.post('/post', async (req, res) => {
   try {
     const { description } = req.body;
     const timestamp = admin.firestore.FieldValue.serverTimestamp();
 
-    const newPost = await firestore.collection('posts').add({
+    const newPost = await firestore.collection('post').add({
       description,
       timestamp,
     });
@@ -33,49 +33,49 @@ app.post('/posts', async (req, res) => {
 });
 
 // Read a post
-app.get('/posts/:postId', async (req, res) => {
+app.get('/post/:postId', async (req, res) => {
   try {
     const postId = req.params.postId;
-    const postSnapshot = await firestore.collection('posts').doc(postId).get();
+    const postnapshot = await firestore.collection('post').doc(postId).get();
 
-    if (!postSnapshot.exists) {
+    if (!postnapshot.exists) {
       return res.status(404).json({ error: 'Post not found' });
     }
 
-    const postData = postSnapshot.data();
-    return res.status(200).json({ id: postSnapshot.id, ...postData });
+    const postData = postnapshot.data();
+    return res.status(200).json({ id: postnapshot.id, ...postData });
   } catch (error) {
     console.error('Error reading post:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Read all posts
-app.get('/posts', async (req, res) => {
+// Read all post
+app.get('/post', async (req, res) => {
   try {
-    const postsSnapshot = await firestore.collection('posts').get();
+    const postSnapshot = await firestore.collection('post').get();
 
-    const allPosts = [];
-    postsSnapshot.forEach((doc) => {
+    const allpost = [];
+    postSnapshot.forEach((doc) => {
       const postData = doc.data();
-      allPosts.push({ id: doc.id, ...postData });
+      allpost.push({ id: doc.id, ...postData });
     });
 
-    return res.status(200).json(allPosts);
+    return res.status(200).json(allpost);
   } catch (error) {
-    console.error('Error reading all posts:', error);
+    console.error('Error reading all post:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 // Update a post
-app.put('/posts/:postId', async (req, res) => {
+app.put('/post/:postId', async (req, res) => {
   try {
     const postId = req.params.postId;
     const { description } = req.body;
     const timestamp = admin.firestore.FieldValue.serverTimestamp();
 
-    await firestore.collection('posts').doc(postId).update({
+    await firestore.collection('post').doc(postId).update({
       description,
       timestamp,
     });
@@ -88,10 +88,10 @@ app.put('/posts/:postId', async (req, res) => {
 });
 
 // Delete a post
-app.delete('/posts/:postId', async (req, res) => {
+app.delete('/post/:postId', async (req, res) => {
   try {
     const postId = req.params.postId;
-    await firestore.collection('posts').doc(postId).delete();
+    await firestore.collection('post').doc(postId).delete();
 
     return res.status(200).json({ message: 'Post deleted successfully' });
   } catch (error) {
