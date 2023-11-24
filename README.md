@@ -11,7 +11,7 @@ This Firebase Cloud Function provides an API to manage post.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+1. Clone the repository: `git clone https://github.com/dalemncy/firebase-cloud-function-post-api`
 2. Install dependencies: `cd your-repo && npm install`
 3. Deploy the Cloud Function: `firebase deploy --only functions`
 
