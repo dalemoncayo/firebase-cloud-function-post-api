@@ -34,4 +34,4 @@ Contributions welcome! Submit issues or pull requests.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
