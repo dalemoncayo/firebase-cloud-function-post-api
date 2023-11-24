@@ -1,6 +1,6 @@
-# Firebase Cloud Function for Managing Posts
+# Firebase Cloud Function for Managing post
 
-This Firebase Cloud Function provides an API to manage posts.
+This Firebase Cloud Function provides an API to manage post.
 
 ## Prerequisites
 
@@ -17,11 +17,11 @@ This Firebase Cloud Function provides an API to manage posts.
 
 ## Usage
 
-- **Create a Post:** `POST /posts`
-- **Read a Post:** `GET /posts/:postId`
-- **Read All Posts:** `GET /posts`
-- **Update a Post:** `PUT /posts/:postId`
-- **Delete a Post:** `DELETE /posts/:postId`
+- **Create a Post:** `POST /post`
+- **Read a Post:** `GET /post/:postId`
+- **Read All post:** `GET /post`
+- **Update a Post:** `PUT /post/:postId`
+- **Delete a Post:** `DELETE /post/:postId`
 
 ## Error Handling
 
