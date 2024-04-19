@@ -1,4 +1,4 @@
-# Firebase Cloud Function for Managing post
+# Firebase Cloud Function for Managing Post
 
 This Firebase Cloud Function provides an API to manage post.
 
